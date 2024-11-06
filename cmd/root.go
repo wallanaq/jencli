@@ -29,4 +29,5 @@ func init() {
 	RootCmd.PersistentFlags().BoolVarP(&Verbose, "verbose", "v", false, "verbose output")
 
 	RootCmd.AddCommand(auth.LoginCmd)
+	RootCmd.AddCommand(auth.LogoutCmd)
 }

@@ -1,5 +1,16 @@
 services:
 
+  jenkins:
+    image: jenkins/jenkins:2.479.1
+    container_name: jenkins
+    ports:
+      - 8082:8082
+      - 50000:50000
+    environment:
+      - JENKINS_OPTS=--httpPort=8082
+    volumes:
+      - jenkins_home:/var/jenkins_home
+
   keycloak:
     image: quay.io/keycloak/keycloak:21.0.0
     container_name: keycloak
@@ -33,6 +44,8 @@ services:
 volumes:
   db_data:
     name: keycloak-db-data
+  jenkins_home:
+    name: jenkins-home
 
 networks:
   default:
